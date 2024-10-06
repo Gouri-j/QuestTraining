@@ -1,0 +1,7 @@
+C:\Users\gouri\source\repos\QuestTrainingPrgm\Day4-10\bin\Debug\Day4-10.exe.config
+C:\Users\gouri\source\repos\QuestTrainingPrgm\Day4-10\bin\Debug\Day4-10.exe
+C:\Users\gouri\source\repos\QuestTrainingPrgm\Day4-10\bin\Debug\Day4-10.pdb
+C:\Users\gouri\source\repos\QuestTrainingPrgm\Day4-10\obj\Debug\Day4-10.csproj.AssemblyReference.cache
+C:\Users\gouri\source\repos\QuestTrainingPrgm\Day4-10\obj\Debug\Day4-10.csproj.CoreCompileInputs.cache
+C:\Users\gouri\source\repos\QuestTrainingPrgm\Day4-10\obj\Debug\Day4-10.exe
+C:\Users\gouri\source\repos\QuestTrainingPrgm\Day4-10\obj\Debug\Day4-10.pdb
