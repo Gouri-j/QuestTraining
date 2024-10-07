@@ -1,0 +1,7 @@
+C:\Users\gouri\Documents\GitHub\QuestTraining\CSharpTraining2\Day5\Day5-2 DateTime\bin\Debug\Day5-2 DateTime.exe.config
+C:\Users\gouri\Documents\GitHub\QuestTraining\CSharpTraining2\Day5\Day5-2 DateTime\bin\Debug\Day5-2 DateTime.exe
+C:\Users\gouri\Documents\GitHub\QuestTraining\CSharpTraining2\Day5\Day5-2 DateTime\bin\Debug\Day5-2 DateTime.pdb
+C:\Users\gouri\Documents\GitHub\QuestTraining\CSharpTraining2\Day5\Day5-2 DateTime\obj\Debug\Day5-2 DateTime.csproj.AssemblyReference.cache
+C:\Users\gouri\Documents\GitHub\QuestTraining\CSharpTraining2\Day5\Day5-2 DateTime\obj\Debug\Day5-2 DateTime.csproj.CoreCompileInputs.cache
+C:\Users\gouri\Documents\GitHub\QuestTraining\CSharpTraining2\Day5\Day5-2 DateTime\obj\Debug\Day5-2 DateTime.exe
+C:\Users\gouri\Documents\GitHub\QuestTraining\CSharpTraining2\Day5\Day5-2 DateTime\obj\Debug\Day5-2 DateTime.pdb

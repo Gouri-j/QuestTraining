@@ -1,0 +1,2 @@
+C:\Users\gouri\Documents\GitHub\QuestTraining\CSharpTraining2\Day5\Day5-1 NameSpaces\obj\Debug\Day5-1 NameSpaces.csproj.AssemblyReference.cache
+C:\Users\gouri\Documents\GitHub\QuestTraining\CSharpTraining2\Day5\Day5-1 NameSpaces\obj\Debug\Day5-1 NameSpaces.csproj.CoreCompileInputs.cache
