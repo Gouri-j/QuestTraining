@@ -1,0 +1,729 @@
+1. DML
+       DML stands for Data Manipulation Language, which is a subset of SQL (Structured Query Language) used to
+       manage and manipulate data in a database. DML commands allow you to retrieve, insert, update, and 
+       delete data.
+        SELECT
+              Used to retrieve data from one or more tables.
+              EG - SELECT * FROM employees;
+        INSERT
+              Used to add new rows to a table.
+              eg- INSERT INTO employees (first_name, last_name, department) 
+                  VALUES ('John', 'Doe', 'Marketing');
+        UPDATE
+             Used to modify existing data in a table.
+             eg - UPDATE employees 
+                  SET department = 'Sales' 
+                  WHERE last_name = 'Doe';
+       DELETE
+             Used to remove rows from a table.
+             eg - DELETE FROM employees 
+                  WHERE last_name = 'Doe';
+       MERGE
+             Used to combine insert and update operations into one statement.
+             eg - MERGE INTO employees AS target
+                  USING (SELECT 'Jane' AS first_name, 'Smith' AS last_name) AS source
+                  ON target.last_name = source.last_name
+                  WHEN MATCHED THEN 
+                  UPDATE SET target.department = 'HR'
+                  WHEN NOT MATCHED THEN 
+                  INSERT (first_name, last_name, department) 
+                  VALUES (source.first_name, source.last_name, 'HR');
+
+
+2. DDL
+       DDL stands for Data Definition Language, which is a subset of SQL used to define and manage database 
+       structures such as tables, indexes, and schemas. DDL commands allow you to create, alter, and delete
+       database objects.
+       CREATE
+             Used to create a new database object, such as a table.
+          eg-   CREATE TABLE employees (
+                employee_id INT PRIMARY KEY,
+                first_name VARCHAR(50),
+                last_name VARCHAR(50),
+                department VARCHAR(50)
+                );
+       ALTER
+             Used to modify an existing database object. 
+             ALTER TABLE employees 
+             ADD hire_date DATE;
+      DROP
+            Used to delete an existing database object.
+            DROP TABLE employees;
+      TRUNCATE
+            Used to remove all records from a table but keep the structure intact.
+            TRUNCATE TABLE employees;
+       RENAME
+            Used to change the name of an existing database object.
+            RENAME TABLE employees TO staff;
+
+
+3. DCL
+      DCL stands for Data Control Language, which is a subset of SQL used to
+      control access to data within a database. DCL commands are primarily 
+      concerned with permissions and security.
+      GRANT
+           Used to provide specific privileges to users or roles.
+           GRANT SELECT, INSERT ON employees TO user1;
+      REVOKE
+           Used to remove specific privileges from users or roles.
+           REVOKE INSERT ON employees FROM user1;
+4. TCL
+       TCL stands for Transaction Control Language, which is a subset of SQL used
+       to manage transactions in a database. TCL commands help ensure the
+       integrity of data by allowing you to define how transactions are handled.
+
+      COMMIT
+            Used to save all the changes made during the current transaction.
+            INSERT INTO employees (first_name, last_name) VALUES 
+            ('Alice', 'Johnson');
+            COMMIT;
+      ROLLBACK
+            Used to undo changes made during the current transaction.
+            INSERT INTO employees (first_name, last_name) VALUES ('Bob', 'Smith');
+            ROLLBACK;
+     SAVEPOINT
+            Used to set a point within a transaction to which you can later
+            roll back.
+            SAVEPOINT before_insert;
+            INSERT INTO employees (first_name, last_name) VALUES 
+            ('Charlie', 'Brown');
+            ROLLBACK TO before_insert;
+    SET TRANSACTION
+            Used to configure the properties of the transaction, such as
+            isolation level.
+            SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+
+
+5. DQL
+       DQL stands for Data Query Language, which is a subset of SQL used to query
+       and retrieve data from a database. The primary DQL command is SELECT,
+       which allows you to specify which data you want to retrieve and how you 
+       want it formatted.
+       SELECT
+             Used to retrieve data from one or more tables.
+             SELECT * FROM employees;
+       SELECT with WHERE
+             Used to filter records based on specified conditions.
+             SELECT first_name, last_name FROM employees WHERE 
+             department = 'Sales';
+       SELECT with ORDER BY
+             Used to sort the result set based on one or more columns.
+             SELECT * FROM employees ORDER BY last_name ASC;
+       SELECT with JOIN
+             Used to combine rows from two or more tables based on a related
+             column.
+             SELECT e.first_name, e.last_name, d.department_name 
+             FROM employees e
+             JOIN departments d ON e.department_id = d.id;
+      SELECT with GROUP BY
+             Used to group rows that have the same values in specified columns 
+             and aggregate data.
+             SELECT department, COUNT(*) AS employee_count 
+             FROM employees 
+             GROUP BY department;
+
+6.SELECT command
+
+ The SELECT command in SQL is used to query and retrieve data from a database.
+ It allows you to specify which columns to retrieve, from which table(s), and 
+ apply conditions, sorting, and grouping.
+ Basic Syntax
+             SELECT column1, column2, ...
+             FROM table_name;
+        eg- SELECT * FROM employees WHERE department = 'Sales';
+
+7. WHERE command
+
+ The WHERE clause in SQL is used to filter records based on specific conditions.
+ It allows you to retrieve only those rows that meet certain criteria, making
+ your queries more precise.
+ Basic Syntax
+             SELECT column1, column2, ...
+             FROM table_name
+             WHERE condition;
+    eg-      SELECT * FROM employees 
+             WHERE department = 'Sales';
+
+
+8.ORDER BY
+
+ The ORDER BY command in SQL is used to sort the result set of a query based on
+ one or more columns. You can specify the sort order as either ascending (ASC) 
+ or descending (DESC).
+ Basic Syntax
+ SELECT column1, column2, ...
+FROM table_name
+ORDER BY column1 [ASC|DESC], column2 [ASC|DESC], ...;
+
+eg-
+SELECT * FROM employees 
+ORDER BY last_name;
+
+
+9.  INSERT INTO
+
+  The INSERT INTO statement in SQL is used to add new rows of data to a table.
+  You can insert data into all columns or specify particular columns if you only
+  want to populate some of them.
+  Basic Syntax
+Inserting Data into All Columns-
+
+INSERT INTO table_name
+VALUES (value1, value2, ...);
+
+Inserting Data into Specific Columns-
+
+INSERT INTO table_name (column1, column2, ...)
+VALUES (value1, value2, ...);
+ 
+ EG-
+ INSERT INTO employees (first_name, last_name)
+VALUES ('Jane', 'Smith');
+
+
+10. UPDATE
+ 
+  The UPDATE statement in SQL is used to modify existing records in a table. 
+  It allows you to change the values of one or more columns for specific rows 
+  that meet certain conditions.
+
+Basic Syntax-
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+
+eg-
+UPDATE employees
+SET department = 'Marketing'
+WHERE employee_id = 1;
+
+
+11. TRUNCATE
+    
+    The TRUNCATE statement in SQL is used to remove all rows from a table while 
+    keeping the table structure intact. It is a fast and efficient way to delete 
+    all records, as it does not log individual row deletions like the DELETE
+    statement does.
+
+Basic Syntax-
+TRUNCATE TABLE table_name;
+eg- 
+TRUNCATE TABLE employees;
+
+
+12. JOIN
+
+    The JOIN clause in SQL is used to combine rows from two or more tables based
+    on a related column between them. It allows you to retrieve data that is
+    spread across multiple tables, which is a common practice in relational
+    databases.
+
+Types of Joins
+
+INNER JOIN-  Returns records that have matching values in both tables.
+             SELECT e.first_name, e.last_name, d.department_name
+             FROM employees e
+             INNER JOIN departments d ON e.department_id = d.id;
+
+LEFT JOIN (or LEFT OUTER JOIN)-  Returns all records from the left table and
+                                 the matched records from the right table.
+                                 If there is no match, NULL values are returne 
+                                 for columns from the right table.
+                                 
+                                 SELECT e.first_name, e.last_name,
+                                 d.department_name
+                                 FROM employees e
+                                 LEFT JOIN departments d 
+                                 ON e.department_id = d.id;
+
+RIGHT JOIN (or RIGHT OUTER JOIN)- Returns all records from the right table and 
+                                 the matched records from the left table. 
+                                 If there is no match, NULL values are returned 
+                                 for columns from the left table.
+
+                                SELECT e.first_name, e.last_name,
+                                d.department_name
+                                FROM employees e
+                                RIGHT JOIN departments d
+                                ON e.department_id = d.id;
+
+
+13. GROUP BY
+
+    The GROUP BY clause in SQL is used to group rows that have the same values in
+    specified columns into summary rows, like aggregating data. It is often used
+    with aggregate functions such as COUNT(), SUM(), AVG(), MAX(), and MIN()
+    to perform calculations on each group.
+
+Basic Syntax - 
+SELECT column1, aggregate_function(column2)
+FROM table_name
+GROUP BY column1;
+ eg-
+ SELECT department, COUNT(*) AS employee_count
+FROM employees
+GROUP BY department
+HAVING COUNT(*) > 10;
+
+
+14. ALTER
+
+ The ALTER statement in SQL is used to modify the structure of an existing
+ database object, such as a table. It allows you to add, modify, or delete
+ columns, as well as change other properties like constraints and indexes.
+
+ Basic Syntax
+Add a Column To add a new column to an existing table:
+     ALTER TABLE table_name
+     ADD column_name data_type;
+Modify a Column To change the data type or properties of an existing column:
+     ALTER TABLE table_name
+     MODIFY column_name new_data_type;
+Drop a Column To remove a column from a table:
+     ALTER TABLE table_name
+     DROP COLUMN column_name;
+Rename a Column To rename an existing column:
+     ALTER TABLE table_name
+     RENAME COLUMN old_column_name TO new_column_name;
+Add a Constraint To add a constraint, such as a foreign key or unique constraint:
+     ALTER TABLE table_name
+     ADD CONSTRAINT constraint_name FOREIGN KEY (column_name) REFERENCES
+     other_table(column_name);
+Drop a Constraint To remove a constraint from a table:
+     ALTER TABLE table_name
+     DROP CONSTRAINT constraint_name;
+
+
+15. CREATE, DROP
+
+The CREATE and DROP statements in SQL are fundamental commands used for managing
+database objects, such as tables, indexes, and views.
+
+CREATE Statement
+The CREATE statement is used to create new database objects.
+
+Creating a Table-
+
+CREATE TABLE table_name (
+    column1 data_type [constraints],
+    column2 data_type [constraints],
+    ...
+);
+
+Example:
+
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    department VARCHAR(50),
+    hire_date DATE
+);
+
+Creating an Index
+
+CREATE INDEX index_name ON table_name (column1, column2, ...);
+
+EG-
+CREATE INDEX idx_last_name ON employees (last_name);
+
+Creating a View-
+CREATE VIEW view_name AS
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+
+Example:
+
+CREATE VIEW sales_employees AS
+SELECT first_name, last_name 
+FROM employees 
+WHERE department = 'Sales';
+
+
+DROP Statement
+The DROP statement is used to delete existing database objects. 
+It permanently removes the object and all its data.
+
+Dropping a Table-
+  DROP TABLE table_name;
+  eg-
+     DROP TABLE employees;
+
+Dropping an Index-
+ DROP INDEX index_name ON table_name;
+ eg- DROP INDEX idx_last_name ON employees;
+
+ Dropping a View
+  DROP VIEW view_name;
+eg- DROP VIEW sales_employees;
+
+
+16. AGGREGATE functions
+
+Aggregate functions in SQL are used to perform calculations on a set of values
+and return a single value. They are commonly used in conjunction with the
+GROUP BY clause to summarize data. 
+
+COUNT() - 
+Counts the number of rows in a specified column or table.
+
+SELECT COUNT(*) AS total_employees FROM employees;
+
+
+SUM() - Calculates the total sum of a numeric column.
+
+ SELECT SUM(salary) AS total_salary FROM employees;
+
+
+AVG() - Calculates the average value of a numeric column.
+
+SELECT AVG(salary) AS average_salary FROM employees;
+
+
+MIN() - Returns the minimum value in a specified column.
+
+SELECT MIN(salary) AS lowest_salary FROM employees;
+
+
+MAX() - Returns the maximum value in a specified column.
+
+SELECT MAX(salary) AS highest_salary FROM employees;
+
+
+Using Aggregate Functions with GROUP BY
+Aggregate functions are often used with GROUP BY to summarize data:
+
+SELECT department, SUM(salary) AS total_salary
+FROM employees
+GROUP BY department;
+
+
+Using HAVING with Aggregate Functions
+You can filter the results of aggregate functions using the HAVING clause:
+
+SELECT department, AVG(salary) AS average_salary
+FROM employees
+GROUP BY department
+HAVING AVG(salary) > 50000;
+
+17. ROLLBACK , COMMIT
+
+    In SQL, ROLLBACK and COMMIT are commands used to manage transactions. 
+    Transactions are a sequence of operations performed as a single logical unit
+    of work. These commands help ensure data integrity and consistency.
+
+COMMIT
+The COMMIT statement is used to save all the changes made during the current
+transaction to the database. Once a transaction is committed, the changes are 
+permanent and cannot be undone.
+
+eg -
+BEGIN;
+INSERT INTO employees (first_name, last_name, department) VALUES 
+('Alice', 'Johnson', 'Sales');
+COMMIT;
+       //In this example, the insertion of the new employee will be saved 
+       permanently in the database once the COMMIT command is executed.
+
+
+ROLLBACK
+The ROLLBACK statement is used to undo changes made during the current transaction
+. If a transaction is rolled back, all changes since the last COMMIT or BEGIN
+will be undone, and the database will return to its previous state.
+
+Example:
+BEGIN;
+INSERT INTO employees (first_name, last_name, department) VALUES 
+('Bob', 'Smith', 'HR');
+ROLLBACK;
+          //In this case, the insertion of Bob Smith will not be saved, and the 
+          employees table will remain unchanged after the ROLLBACK command is 
+          executed.
+
+
+
+18. CHECKPOINT
+
+In the context of SQL databases, a checkpoint is a critical process used to 
+enhance data integrity and optimize performance. 
+It refers to a specific point in time when the database management system (DBMS)
+saves the current state of the database, including all changes made up to that 
+point. 
+
+Key Functions of a Checkpoint
+
+Data Consistency:
+                  A checkpoint ensures that all transactions that have been
+completed before the checkpoint are safely written to disk. 
+This helps maintain data consistency in the event of a system failure.
+
+Recovery Efficiency:
+                    In case of a failure, the database can be restored to the last
+checkpoint, significantly reducing the amount of time needed to recover data 
+compared to restoring from a full backup.
+
+Log Management:
+               Checkpoints help in managing the transaction log. 
+After a checkpoint, the DBMS can truncate the log, meaning it can discard older
+log entries that are no longer needed for recovery, thus preventing the log from 
+growing indefinitely.
+
+
+Example of a Checkpoint
+While the exact implementation and syntax can vary by database system, the concept
+of a checkpoint typically doesn't require explicit commands in many SQL databases.
+Instead, the DBMS manages checkpoints automatically. However, some systems may 
+allow for manual checkpointing.
+
+
+19. STORED PROCEDURES
+
+ Stored procedures in SQL are precompiled collections of SQL statements and 
+ optional control-flow statements that can be executed as a single unit. 
+ They are stored in the database and can be called by applications or users to
+ perform specific tasks. Stored procedures are useful for encapsulating complex
+ logic, improving performance, and enhancing security.
+
+Key Features of Stored Procedures
+
+Reusability:
+            Stored procedures can be reused multiple times in various applications without
+            needing to rewrite the SQL code.
+
+Encapsulation:
+              They encapsulate complex business logic, allowing developers to manage and 
+              maintain code more easily.
+
+Performance:
+            Since stored procedures are precompiled, they can execute faster than 
+            individual SQL statements sent from applications.
+
+Security:
+         They can enhance security by controlling access to data and encapsulating the 
+         logic required to interact with the database.
+
+Parameter Support:
+                 Stored procedures can accept input parameters and return output parameters
+                 , making them flexible for different use cases.
+
+Basic Syntax -
+CREATE PROCEDURE procedure_name (parameter1 datatype, parameter2 datatype, ...)
+AS
+BEGIN
+    -- SQL statements
+END;
+
+20. FUNCTIONS
+
+In SQL, a function is a stored program that can accept parameters, perform operations, and
+return a single value or a table. Functions are used to encapsulate reusable logic that can
+be called in SQL statements, making it easier to manage and maintain code.
+
+Key Features of Functions
+
+Input Parameters:
+Functions can accept input parameters to customize their behavior.
+
+Return Values:
+Functions always return a value, either a single scalar value (like an integer or string)
+or a table.
+
+Deterministic vs. Non-Deterministic:
+Functions can be deterministic (returning the same result for the same input every time)
+or non-deterministic.
+
+Usage in SQL Statements:
+Functions can be used in SELECT, WHERE, and other SQL statements.
+
+Basic Syntax
+CREATE FUNCTION function_name (parameter1 datatype, parameter2 datatype, ...)
+RETURNS return_datatype
+AS
+BEGIN
+    -- SQL statements
+    RETURN return_value;
+END;
+
+
+Creating a Scalar Function A function that calculates the annual salary from a monthly 
+salary:
+
+CREATE FUNCTION CalculateAnnualSalary (@MonthlySalary DECIMAL(10, 2))
+RETURNS DECIMAL(10, 2)
+AS
+BEGIN
+    RETURN @MonthlySalary * 12;
+END;
+
+
+Using the Function You can call the function in a SQL query:
+
+SELECT first_name, last_name, 
+       dbo.CalculateAnnualSalary(salary) AS annual_salary
+FROM employees;
+
+
+Creating a Table-Valued Function A function that returns a table of employees in a specific
+department:
+
+CREATE FUNCTION GetEmployeesByDepartment (@DepartmentName VARCHAR(50))
+RETURNS TABLE
+AS
+RETURN (
+    SELECT * 
+    FROM employees
+    WHERE department = @DepartmentName
+);
+
+
+
+Using the Table-Valued Function You can use it in a JOIN or as a regular table:
+
+SELECT *
+FROM GetEmployeesByDepartment('Sales') AS sales_employees;
+
+
+
+
+21. TRIGGER
+
+A trigger in SQL is a set of instructions that are automatically executed (or "triggered") 
+in response to certain events on a particular table or view. Triggers can be used to
+enforce business rules, maintain data integrity, and automate processes.
+
+Key Features of Triggers
+
+Automatic Execution: Triggers are executed automatically when a specified event occurs, 
+such as an INSERT, UPDATE, or DELETE.
+
+Enforcement of Rules: They can enforce complex business rules that cannot be implemented 
+through constraints alone.
+
+Audit Trails: Triggers can be used to maintain audit trails of changes to data.
+
+Complex Logic: They allow for executing complex logic that might involve multiple tables
+or actions.
+
+
+
+Different Types of Triggers
+
+BEFORE Triggers
+                These triggers are executed before an INSERT, UPDATE, or DELETE operation 
+                on a table. They can be used to modify the values being inserted or updated.
+Example:
+
+CREATE TRIGGER before_insert_employee
+BEFORE INSERT ON employees
+FOR EACH ROW
+SET NEW.hire_date = NOW();
+
+
+AFTER Triggers
+
+These triggers are executed after an INSERT, UPDATE, or DELETE operation.
+They are often used for logging or enforcing business rules after data modifications.
+
+Example:
+
+CREATE TRIGGER after_insert_employee
+AFTER INSERT ON employees
+FOR EACH ROW
+BEGIN
+    INSERT INTO employee_audit (employee_id, action, action_date)
+    VALUES (NEW.employee_id, 'INSERT', NOW());
+END;
+
+
+
+INSTEAD OF Triggers
+
+These triggers are used to replace the standard action of INSERT, UPDATE, or DELETE. 
+They are commonly used on views to control how changes to the view are handled.
+
+Example:
+
+CREATE TRIGGER instead_of_delete_employee
+INSTEAD OF DELETE ON employees_view
+FOR EACH ROW
+BEGIN
+    -- Custom logic for deletion
+    INSERT INTO employee_deletions (employee_id, deleted_at)
+    VALUES (OLD.employee_id, NOW());
+END;
+
+
+
+
+
+22. LIMITATIONS OF VIEW
+
+
+
+Read-Only Nature:
+
+Some views are read-only, meaning you cannot directly modify the underlying data through 
+them. This is especially true for complex views that involve joins, aggregations, or
+certain functions.
+
+
+Performance Overhead:
+
+Views can introduce performance overhead, particularly if they involve complex queries or
+multiple joins. The database must execute the underlying query each time the view is
+accessed.
+
+
+Lack of Indexing:
+
+Views themselves cannot be indexed directly. However, materialized views (in some databases)
+can store the result set and be indexed, but standard views do not support this.
+
+
+Dependency on Underlying Tables:
+
+If the structure of the underlying tables changes (e.g., columns are added or removed), the
+view may become invalid, requiring updates to the view definition.
+
+
+Limited Support for Certain SQL Constructs:
+
+Some SQL operations cannot be performed on views, such as:
+     Using ORDER BY without a TOP or LIMIT clause in certain contexts.
+     Using certain aggregate functions directly in a view that is intended for updates.
+
+
+Complexity in Permissions:
+
+Managing permissions on views can become complex, especially if views are nested or depend
+on other views. Changes in underlying permissions can also impact views.
+
+
+Nested Views:
+
+While nesting views can provide additional abstraction, it can lead to performance issues
+and complexity. Each nested view introduces additional layers of processing.
+
+
+Limited Control Over Data Types:
+
+Views may not allow you to change the data types of the underlying columns. 
+If you need to modify the data type, you will have to alter the underlying table.
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+

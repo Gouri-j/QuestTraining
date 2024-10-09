@@ -1,0 +1,53 @@
+Normalization
+
+Normalisation is a process in database design used to organize data to reduce redundancy and improve data integrity. 
+The goal is to ensure that each piece of information is stored in one place, making updates easier and minimizing the risk of 
+inconsistencies.
+
+
+Techniques of Normalization
+
+Normalization involves several stages, known as normal forms (NF). Here are the main normal forms:
+
+1. **First Normal Form (1NF)**:
+   - Ensures that all columns in a table contain atomic values (no repeating groups or arrays).
+   - Each record is unique.
+
+2. **Second Normal Form (2NF)**:
+   - Builds on 1NF by ensuring that all non-key attributes are fully functional dependent on the primary key.
+   - Eliminates partial dependencies.
+
+3. **Third Normal Form (3NF)**:
+   - Builds on 2NF by ensuring that all non-key attributes are not only dependent on the primary key but also independent of each
+   other (eliminates transitive dependencies).
+
+4. **Boyce-Codd Normal Form (BCNF)**:
+   - A stronger version of 3NF where every determinant is a candidate key.
+   - Addresses certain anomalies that 3NF might not cover.
+
+5. **Higher Normal Forms (4NF, 5NF, etc.)**:
+   - These address more complex types of dependencies, like multi-valued dependencies (4NF) and join dependencies (5NF).
+
+
+
+
+
+ Benefits of Normalization
+
+1. **Reduced Data Redundancy**:
+   - Minimizes duplication of data, which saves storage space and improves efficiency.
+
+2. **Improved Data Integrity**:
+   - Ensures that data is consistent and accurate since there’s a single source of truth for each piece of information.
+
+3. **Easier Maintenance**:
+   - Simplifies updates and deletions; changes need to be made in only one place.
+
+4. **Enhanced Query Performance**:
+   - Well-structured data can lead to more efficient queries and faster retrieval times.
+
+5. **Better Data Organization**:
+   - Makes it easier to understand the data relationships and structures, which aids in database management.
+
+While normalization has many advantages, it’s important to balance normalization with performance considerations, especially in
+large databases. Sometimes, denormalization (combining tables) is used to improve read performance for specific applications.
