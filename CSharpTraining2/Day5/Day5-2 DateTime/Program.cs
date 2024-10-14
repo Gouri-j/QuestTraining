@@ -10,40 +10,42 @@ namespace Day5_2_DateTime
     {
         static void Main(string[] args)
         {
-            // Local date and time
-            DateTime dt = DateTime.Now;
-            Console.WriteLine(dt);
-            
-            // UTC Time
-            DateTime dtu = DateTime.UtcNow;
-            Console.WriteLine(dtu);
-            Console.WriteLine($"Day: {dt.Day}");
-            Console.WriteLine($"Month: {dt.Month}");
-            Console.WriteLine($"Year: {dt.Year}");
+             // Local date and time
+              DateTime dt = DateTime.Now;
+              Console.WriteLine(dt);
 
-            Console.WriteLine($"Hour: {dt.Hour}");
-            Console.WriteLine($"Minute: {dt.Minute}");
-            Console.WriteLine($"Second: {dt.Second}");
-            Console.WriteLine($"Millisecond: {dt.Millisecond}");
+              // UTC Time
+              DateTime dtu = DateTime.UtcNow;
+              Console.WriteLine(dtu);
+              Console.WriteLine($"Day: {dt.Day}");
+              Console.WriteLine($"Month: {dt.Month}");
+              Console.WriteLine($"Year: {dt.Year}");
 
-            var tenDaysFromNow = dt.AddDays( 10 );
-            Console.WriteLine(tenDaysFromNow);
+              Console.WriteLine($"Hour: {dt.Hour}");
+              Console.WriteLine($"Minute: {dt.Minute}");
+              Console.WriteLine($"Second: {dt.Second}");
+              Console.WriteLine($"Millisecond: {dt.Millisecond}");
 
-            var tenDaysAndTwentyHoursFromNow = dt.AddHours(20).AddDays(10);
-            Console.WriteLine( tenDaysAndTwentyHoursFromNow);
+              var tenDaysFromNow = dt.AddDays( 10 );
+              Console.WriteLine(tenDaysFromNow);
 
-            // Formatting the output
-            Console.WriteLine("----------------");
-            Console.WriteLine($"Standard Output: {dt}");
-            Console.WriteLine(dt.ToString("dd-MM-yyyy hh:mm:ss"));
-            Console.WriteLine(dt.ToString("MM-dd-yyyy hh:mm:ss"));
-            Console.WriteLine(dt.ToString("MM/dd/yyyy hh:mm:ss"));
-            Console.WriteLine(dt.ToString("MM-dd-yyyy"));
-            Console.WriteLine(dt.ToString("hh:mm:ss"));
+              var tenDaysAndTwentyHoursFromNow = dt.AddHours(20).AddDays(10);
+              Console.WriteLine( tenDaysAndTwentyHoursFromNow);
 
-            var myDt = new DateTime(2024, 10, 7, 12, 30,15);
-            Console.WriteLine(myDt);
-         Console.ReadKey();
+              // Formatting the output
+              Console.WriteLine("----------------");
+              Console.WriteLine($"Standard Output: {dt}");
+              Console.WriteLine(dt.ToString("dd-MM-yyyy hh:mm:ss"));
+              Console.WriteLine(dt.ToString("MM-dd-yyyy hh:mm:ss"));
+              Console.WriteLine(dt.ToString("MM/dd/yyyy hh:mm:ss"));
+              Console.WriteLine(dt.ToString("MM-dd-yyyy"));
+              Console.WriteLine(dt.ToString("hh:mm:ss"));
+
+              var myDt = new DateTime(2024, 10, 7, 12, 30,15);
+              Console.WriteLine(myDt);
+           Console.ReadKey(); 
+           // var s = "hellogouri";
+            //Console.WriteLine(s.Humanize());
         }
     }
 }
